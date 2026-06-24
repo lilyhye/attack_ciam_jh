@@ -15,9 +15,10 @@ import pandas as pd
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
-# 파일 경로 정의
-xlsx_path = r"C:\Users\JMC003\Desktop\attack_ciam\CIAM_attack_all_260624.xlsx"
-db_path = r"C:\Users\JMC003\Desktop\attack_ciam\ciam_attack.db"
+# 파일 경로 정의 (현재 스크립트 위치 기준으로 동적 설정)
+base_dir = os.path.dirname(os.path.abspath(__file__))
+xlsx_path = os.path.join(base_dir, "CIAM_attack_all_260624.xlsx")
+db_path = os.path.join(base_dir, "ciam_attack.db")
 sheet_name = "_attack 계정"
 table_name = "attack_account"
 
