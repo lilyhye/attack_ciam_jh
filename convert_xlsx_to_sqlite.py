@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """
+엑셀 파일(CIAM_attack_all_260624.xlsx)의 데이터를
+SQLite 데이터베이스(ciam_attack.db)로 마이그레이션하고
 공격 패턴 Top 5 분석을 터미널에 출력하는 고도화된 스크립트입니다.
 """
 
@@ -14,9 +16,16 @@ sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
 # 파일 경로 정의
+xlsx_path = r"C:\Users\JMC003\Desktop\attack_ciam\CIAM_attack_all_260624.xlsx"
 db_path = r"C:\Users\JMC003\Desktop\attack_ciam\ciam_attack.db"
 sheet_name = "_attack 계정"
 table_name = "attack_account"
+
+def main():
+    print(f"1. 엑셀 파일 로딩 중... ({xlsx_path})")
+    if not os.path.exists(xlsx_path):
+        print(f"오류: 엑셀 파일이 경로에 존재하지 않습니다: {xlsx_path}")
+        return
 
     try:
         # 두 번째 행(인덱스 1)을 컬럼 이름(Header)으로 지정하여 로드
